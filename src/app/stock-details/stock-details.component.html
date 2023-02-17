@@ -1,0 +1,27 @@
+<h1>Stock Management</h1>
+<table border=1>
+    <tr>
+        <td>StockId</td>
+        <td>StockName</td>
+        <td>StockIndustry</td>
+        <td>StockPurchasePrice</td> 
+        <td>StockCurrentPrice</td> 
+        <td>StockQty</td> 
+        <td>InvestmentValue</td> 
+        <td>CurrentValue</td> 
+        <td>Status</td> 
+        <td>Recommendation</td>
+    </tr>
+    <tr *ngFor='let s of stockDetails'>
+        <td>{{s.stockId}}</td>
+        <td>{{s.stockName}}</td>
+        <td>{{s.stockIndustry}}</td>
+        <td>{{s.stockPurchasePrice}}</td>
+        <td>{{s.stockCurrentPrice}}</td>
+        <td>{{s.stockQty}}</td>
+        <td>{{s.stockPurchasePrice | investment:s.stockQty}}</td>
+        <td>{{s.stockCurrentPrice | current:s.stockQty}}</td>
+        <td>{{s.stockQty | status:s.stockPurchasePrice:s.stockCurrentPrice}}</td>
+        <td>{{s.stockQty | recommendation:s.stockPurchasePrice:s.stockCurrentPrice}}</td>
+    </tr>
+</table>
